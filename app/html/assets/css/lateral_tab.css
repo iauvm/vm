@@ -1,20 +1,25 @@
 /* LATERAL TAB */
 
-#content-lateral-tab
+#content
 {
-	width: 400px;
-	height: 435px;
+	width: 500px;
+	height: 535px;
 	background-color: #FFFFFF;
 	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 	margin: auto;
-	position: relative;
+/*	position: relative;*/
+	box-sizing: border-box;
+	background-image: url("../svg/statue-liberte.svg");
+	background-repeat: no-repeat;
+	background-size: 100px;
+	background-position: 5% 115%;
 }
 
 #line-top
 {
-	height: 7px;
+	height: 10px;
 	background-color: #325E82;
 }
 
@@ -27,19 +32,45 @@ img
 #line-bottom
 {
 	clear: both;
-	height: 7px;
+	height: 10px;
 	background-color: #6590A4;
 }	
 
-section
+#block-description-city
+{
+	margin: auto;	
+	width: 365px;
+	height: 355px;
+	margin-top: 25px;
+	overflow-y: auto;
+}
+
+#city-name
+{
+	font-family: 'Calibri';  /*Helvetica Neue 75 Bold */
+	font-weight: bold;
+	font-size: 15px;
+}
+
+section p
+{
+	font-family: 'Helvetica';  /*Helvetica Neue 45 Light*/
+	font-size: 11px; 
+	font-weight: lighter;
+	color: #6590A4;
+}
+
+
+
+/*section
 {
 	height: 330px;
 	background-color: #FFFFFF;
 	padding-top: 18px;
 	padding-bottom: 18px;
 	box-sizing: border-box;
-}
-
+}*/
+					/* NE PAS DECOMMENTER */
 /*section::before
 {
 	content: "";
@@ -65,28 +96,4 @@ section::after
 	position: absolute;
 	background-color: white;
 }*/
-
-#test
-{
-	margin: auto;	
-	width: 293px;
-	height: 261px;
-	/*padding-bottom: 20px;	
-	margin-bottom: 20px;*/
-	background-color: pink;
-	overflow-y: auto;
-}
-
-#city-name
-{
-	font-family: 'Calibri'; /* Helvetica Neue 75 Bold */
-	font-weight: bold;
-	font-size: 15px;
-}
-
-section p
-{
-	font-family: 'Calibri'; /* Helvetica Neue 45 Light */
-	font-size: 10px;
-	color: #6590A4;
-}
+					/* NE PAS DECOMMENTER */
