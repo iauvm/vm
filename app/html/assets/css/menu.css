@@ -1,0 +1,134 @@
+/* MENU RADAR */
+
+#content
+{
+
+	width: 265px;
+	height: 555px;
+	margin: auto;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+	background-color: #D0DBE7;
+	box-sizing: border-box;
+}
+
+header 
+{
+	position: relative;
+}
+
+#block-city
+{
+	width:100%;
+	background-color: #325E82;
+	font-family: 'Calibri'; /* helvetica neue 26px bold */
+	font-size: 26px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: right;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-right: 15px;
+	line-height: 0.7em;
+	box-sizing: border-box;
+}
+
+#block-country
+{
+	width: 100%;
+	background-color: #6590A4;
+	font-family: 'Calibri'; /* Helvetica Neue 45 Light 20px*/
+	font-weight: lighter;
+	font-size: 20px;
+	text-transform: uppercase;
+	color: white;
+	text-align: right;
+	line-height: 0.7em;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 15px;
+	box-sizing: border-box;
+}
+
+h2#block-country::before 
+{
+	content: url("../svg/statue-liberte.svg");
+	transform: scale(1.5);
+	position: absolute;
+	top: 23px;
+	left: 15px;
+}
+
+section
+{
+	width: 100%;
+	background-color: #D0DBE7;
+	padding-top: 20px;
+}
+
+section p
+{
+	font-family: 'Calibri'; /* Helvetica Neue 45 Light Condensed 13px*/
+	font-size: 12px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+section b 
+{
+	font-family: 'Calibri'; /* Helvetica Neue 75 Bold 15px*/
+	font-weight: bold;
+	font-size: 15px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+#space-line
+{
+	margin-top: 5px;
+}
+
+#strong-point
+{
+	margin-top: 25px;
+}
+
+#radar
+{
+	margin: auto;
+	width: 255px;
+	height: 245px;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-top: 5px;
+	box-sizing: border-box;
+	background-color: white; /* A RETIRER JUSTE POUR REPERE */
+}
+
+#city-description
+{
+	width: 100%;
+	text-align: justify;
+	padding-right: 10px;
+	padding-left: 10px;
+	font-family: 'Calibri'; /* Helvetica Neue 45 Light 20px*/
+	font-weight: lighter;
+	font-size: 11px;
+	margin-top: 10px;
+	box-sizing: border-box;
+}
+
+#copyright-author
+{
+	font-family: 'Calibri'; /* Helvetica Neue 45 Light 20px*/
+	font-weight: lighter;
+	font-size: 10px;
+	text-align: right;
+}+
+
+/* END OF MENU RADAR */ 
+
+/* LATERAL TAB */
+
+#content-lateral-tab
