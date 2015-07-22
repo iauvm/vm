@@ -1,0 +1,23 @@
+npm:
+  image: docker/node
+  volumes:
+    - /home/osboxes/Documents/Polymer:/app
+  working_dir: /app
+  command: npm
+
+gulp:
+  image: docker/node
+  volumes:
+    - /home/osboxes/Documents/Polymer:/app
+  ports:
+    - "3000:3000"
+    - "3001:3001"
+  working_dir: /app
+  command: gulp
+
+bower:
+  image: docker/node
+  volumes:
+    - /home/osboxes/Documents/Polymer:/app
+  working_dir: /app
+  command: bower

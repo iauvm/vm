@@ -1,0 +1,121 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<dom-module id="app-radar">
+  <template>
+    <div id="radar"></div>
+  </template>
+</dom-module>
+
+        <script type="text/javascript" src="http://d3js.org/d3.v2.min.js"></script>
+<script>
+
+  Polymer({
+    is: 'app-radar',
+    ready: function() {
+
+        // tableau de data
+        var data = [
+            {criteria: "crtit3", value: 2},
+            {criteria: "crtit4", value: 3},
+            {criteria: "crtit5", value: 1},
+            {criteria: "crtit1", value: 1},
+            {criteria: "crtit2", value: 1},
+            {criteria: "crtit3", value: 2},
+            {criteria: "crtit4", value: 3},
+            {criteria: "crtit5", value: 1},
+        ];
+
+        // on défini des variables width height et center 
+        var width = 500;
+        var height = 500;
+        var center={x: width/2, y: height/2};
+
+
+        var levels = d3.max(data.map(function(d){return d.value +1}));
+
+        // création du canvas svg 'radar'
+        var canvas = d3.select("#radar")
+                .append("svg")
+                .attr("height", height)
+                .attr("width", width)
+                .append("g")
+                .attr("transform", "translate(20, 20)");
+
+        // définition de l'echelle 
+        var scale = d3.scale
+                .linear()
+                .domain([0, levels])
+                .range([0, width/2]);
+
+        var cercles =
+            canvas
+                .append("g")
+                .attr("transform", "translate(" + center.x +", " + center.y + ")");
+
+        for (var i=0; i < levels; i++) {
+            cercles
+                .append("circle")
+                .attr("r", scale(i))
+                .attr("fill", "none")
+                .attr("stroke", "#6892A8")
+                .attr("stroke-width", 0.6);
+        }
+
+        var points  =
+            canvas
+                .append("g")
+                .attr("transform", "translate(" + center.x +", " + center.y + ")")
+                .selectAll("circle")
+                .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("r", 4)
+                    .attr("fill", "#E30613")
+                .transition()
+                .duration(2000)
+
+                    .attr("cx", function(d, i) { return Math.cos(i*2*Math.PI/(data.length))*scale(d.value)})
+                    .attr("cy", function(d, i) { return Math.sin(i*2*Math.PI/(data.length))*scale(d.value)});
+
+        var axis =
+            canvas
+                .append("g")
+                .attr("transform", function(d, i) { return "translate(" + center.x + ", " + center.y + ")";})
+                .selectAll("line")
+                .data(data)
+                .enter()
+                    .append("line")
+                    .attr("x2", function() { return scale(levels);})
+                    .attr("stroke-width", 0.6)
+                    .attr("stroke", "#6892A8")
+                    .attr("transform", function(d, i) { return "rotate(" + i*360/data.length + ")";});
+
+//console.log(points);
+        var polygone =
+            canvas
+                .selectAll("polygon")
+                .data(points)
+                .enter()
+                .append("polygon")
+                .attr("transform", function(d, i) { return "translate(" + center.x + ", " + center.y + ")";})
+                .attr("points", function(d) {
+                    return d.map(function(d, i) {
+                        return [0, 0].join(",");
+                    }).join(" ");
+                })
+                .attr("stroke", "#E30613")
+                .attr("stroke-width", 2)
+                .attr("fill", "#E30613")
+                .attr("opacity", 0.4)
+                .transition()
+                .duration(2000)
+                .attr("points", function(d) {
+                    return d.map(function(d, i) {
+                        return [
+                            Math.cos(i*2*Math.PI/(data.length))*scale(d.node.__data__.value),
+                            Math.sin(i*2*Math.PI/(data.length))*scale(d.node.__data__.value)].join(",");
+                    }).join(" ");
+                })
+        }
+    });
+</script>
