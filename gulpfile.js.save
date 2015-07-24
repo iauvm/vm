@@ -10,18 +10,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 'use strict';
 
 // Include Gulp & Tools We'll Use
-var gulp = require('gulp'),
-   $ = require('gulp-load-plugins')(),
-   del = require('del'),
-   runSequence = require('run-sequence'),
-   browserSync = require('browser-sync'),
-   reload = browserSync.reload,
-   merge = require('merge-stream'),
-   path = require('path'),
-   fs = require('fs'),
-   glob = require('glob'),
-   historyApiFallback = require('connect-history-api-fallback'),
-   svgSprite = require('gulp-svg-sprite');
+var gulp = require('gulp');
+var $ = require('gulp-load-plugins')();
+var del = require('del');
+var runSequence = require('run-sequence');
+var browserSync = require('browser-sync');
+var reload = browserSync.reload;
+var merge = require('merge-stream');
+var path = require('path');
+var fs = require('fs');
+var glob = require('glob');
+var historyApiFallback = require('connect-history-api-fallback');
 
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
@@ -79,21 +78,6 @@ gulp.task('images', function () {
     })))
     .pipe(gulp.dest('dist/images'))
     .pipe($.size({title: 'images'}));
-});
-
-//SVG Sprite
-gulp.task('svg-sprite', function () {
- return gulp.src('app/images/icons/criteres/*.svg')
-   .pipe(svgSprite({
-    mode: {
-       css: {     // Activate the «css» mode 
-           render: {
-               css: true  // Activate CSS output (with default options) 
-           }
-       }
-     }
-   }))
-   .pipe(gulp.dest('app/images/icons/criteres/out'));
 });
 
 // Copy All Files At The Root Level (app)
@@ -193,11 +177,8 @@ gulp.task('precache', function (callback) {
 // Clean Output Directory
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-
-
- 
 // Watch Files For Changes & Reload
-gulp.task('serve', ['styles', 'elements'/*, 'images'*/], function () {
+gulp.task('serve', ['styles', 'elements', 'images'], function () {
   browserSync({
     notify: false,
     logPrefix: 'PSK',
@@ -227,7 +208,6 @@ gulp.task('serve', ['styles', 'elements'/*, 'images'*/], function () {
   gulp.watch(['app/elements/**/*.css'], ['elements', reload]);
   gulp.watch(['app/{scripts,elements}/**/*.js'], ['jshint']);
   gulp.watch(['app/images/**/*'], reload);
-
 });
 
 // Build and serve the output from the dist build
@@ -257,7 +237,7 @@ gulp.task('default', ['clean'], function (cb) {
   runSequence(
     ['copy', 'styles'],
     'elements',
-    ['jshint', /*'images',*/'svg-sprite', 'fonts', 'html'],
+    ['jshint', 'images', 'fonts', 'html'],
     'vulcanize',
     cb);
     // Note: add , 'precache' , after 'vulcanize', if your are going to use Service Worker
