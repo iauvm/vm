@@ -3,19 +3,56 @@
 
 <dom-module id="app-container">
 <style>
-	:host {
+	:host{
 		display: block;
-		width:300px;
-		height:50px;
 	}
-	.color {
-		background-color: red;
-		width: 300px;
-		height: 50px;
-	}
-</style>
 
-</dom-module>
+	#info > ::content {
+		position: absolute;
+    	width: 200px;
+	    height: 400px;
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+        box-sizing: border-box;
+	}
+
+	button {
+		transform: rotate(-90deg);
+		-webkit-transform: rotate(-90deg);
+		-o-transform: rotate(-90deg);
+		-moz-transform: rotate(-90deg);
+	    transform-origin: 0% 0%;
+		-ms-transform-origin: 0% 0%; /* IE 9 */
+	    -webkit-transform-origin: 0% 0%; /* Chrome, Safari, Opera */
+		border: 1px solid;
+	    border-top-left-radius: 25px;
+	    border-top-right-radius: 25px;
+		width: 100px;
+		background-color: white;
+	}
+
+	#detail button {
+		position: relative;
+		z-index: 10;
+		top: 400px;
+		left: -19px;
+	}
+
+	#detail>::content {
+		background-color: red;
+		position: relative;
+		width: 400px;
+	}
+
+</style>
+<template>
+	<div id='info'><content select='app-info'></content></div>
+	<div id='detail'>
+		<button on-click='_toggle'>test</button>
+		<content select='app-detail'></content>
+	</div>
+</template>
 
 <script>
 	Polymer({
@@ -26,16 +63,21 @@
 		    	value: function() {
 		        	return {
 		          		'entry': {
-		            		name: 'scale-up-animation',
-		            		node: Polymer.dom(this).querySelector('app-lateral')
+		            		name: 'slide-left-animation',
+		            		node: this.$.detail,
+		            		timing : {fill: 'forwards'}
 		        		},
 		          		'exit': {
-		            		name: 'fade-out-animation',
-		            		node: Polymer.dom(this).querySelector('app-lateral')
+		            		name: 'slide-right-animation',
+		            		node: this.$.detail
 		            	}
 		        	}
 		    	}
 			}
+	    },
+	    _toggle: function(event, detail, sender) {
+	    	this.playAnimation('entry');
 	    }
 	});
 </script>
+</dom-module>

@@ -5,26 +5,42 @@
 	<style>
 		:host {
 			display: block;
+		}
+		#detail ::content header {
+			transform: rotate(-90deg);
+			-webkit-transform: rotate(-90deg);
+			-o-transform: rotate(-90deg);
+			-moz-transform: rotate(-90deg);
+	    	transform-origin: 0% 0%;
+		    -ms-transform-origin: 0% 0%; /* IE 9 */
+	    	-webkit-transform-origin: 0% 0%; /* Chrome, Safari, Opera */
+			border: 1px solid;
+	    	border-top-left-radius: 25px;
+	    	border-top-right-radius: 25px;
+			padding-left: 15px;
 			width: 100px;
-			height: 100px;
-			background-color: red;
+		}
+		#detail ::content section {
+			position: fixed;
+			width: 300px;
 		}
 	</style>
+	<template>
+		<div id='detail'><content></content></div>
+	</template>
+
+	<script>
+	  Polymer({
+	    is: 'app-lateral',
+	    behaviors: [Polymer.NeonAnimationBehavior],
+		properties: {
+		  entryAnimation: {
+		    value: 'slide-from-right-animation'
+		  },
+		  exitAnimation: {
+		    value: 'slide-from-left-animation'
+		  }
+		}
+	  });
+	</script>
 </dom-module>
-
-<script>
-
-  Polymer({
-    is: 'app-lateral',
-    behaviors: [Polymer.NeonAnimationBehavior],
-	properties: {
-	  entryAnimation: {
-	    value: 'scale-up-animation'
-	  },
-	  exitAnimation: {
-	    value: 'fade-out-animation'
-	  }
-	}
-  });
-
-</script>
