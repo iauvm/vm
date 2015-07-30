@@ -2,3 +2,254 @@ body
 {
 	background-color: #638fa6;
 }
+
+.icons
+{
+	position: relative;
+	margin: auto;
+	width: 1px;
+	height: 1px;
+/*	background-color: red;*/
+	margin-top: 350px;
+}
+
+.texts
+{
+	position: relative;
+	margin: auto;
+	width: 1px;
+	height: 1px;
+	font-family: 'Helvetica'; /* Helvetica Nueue Condensed 18px  */
+	color: #FFFFFF;
+}
+
+.svg
+{
+	height: 36px;
+	width: 36px;
+}
+
+.book
+{
+	position: absolute;
+	transform-origin: 18px 120px;
+	transform: scale(3) rotate(0deg);
+}
+
+.castle
+{
+	position: absolute;
+	transform-origin: 18px 120px;
+	transform: scale(3) rotate(36deg);
+} 
+
+.cinema
+{
+	position: absolute;
+	transform-origin: 18px 120px;
+	transform: scale(3) rotate(72deg);
+}
+
+.cocktail
+{
+	position: absolute;
+	transform-origin: 18px 120px;
+	transform: scale(3) rotate(108deg);
+}
+
+.enceinte
+{
+	position: absolute;
+	transform-origin: 18px 120px;
+	transform: scale(3) rotate(144deg);
+}
+
+.food
+{
+	position: absolute;
+	transform-origin: 18px 120px;
+	transform: scale(3) rotate(180deg);
+}
+
+.monument
+{
+	position: absolute;
+	transform-origin: 18px 120px;
+	transform: scale(3) rotate(216deg);
+}
+
+.people
+{
+	position: absolute;
+	transform-origin: 18px 120px;
+	transform: scale(3) rotate(252deg);
+}
+
+.music
+{
+	position: absolute;
+	transform-origin: 18px 120px;
+	transform: scale(3) rotate(288deg);
+}
+
+.theatre
+{
+	position: absolute;
+	transform-origin: 18px 120px;
+	transform: scale(3) rotate(324deg);
+}
+
+/* PART REVERSE ROTATION OF SVG */
+
+.reverse-castle
+{
+	transform: rotate(-36deg);
+}
+
+.reverse-cinema
+{
+	transform: rotate(-72deg);
+}
+
+.reverse-cocktail
+{
+	transform: rotate(-108deg);
+}
+
+.reverse-enceinte
+{
+	transform: rotate(-144deg);
+}
+
+.reverse-food
+{
+	transform: rotate(-180deg);
+}
+
+.reverse-monument
+{
+	transform: rotate(-216deg);
+}
+
+.reverse-people
+{
+	transform: rotate(-252deg);
+}
+
+.reverse-music
+{
+	transform: rotate(-288deg);
+}
+
+.reverse-theatre
+{
+	transform: rotate(-324deg);
+}
+
+/*  ------------------------------------------  */
+
+
+.book.text
+{
+	position: absolute;
+	transform-origin: 55px 150px;
+}
+
+.castle.text
+{
+	position: absolute;
+	transform-origin: -10px 170px;
+} 
+
+.fix-castle
+{
+	transform: rotate(-36deg);
+}
+
+.cinema.text
+{
+	position: absolute;
+	transform-origin: 25px 160px;
+}
+
+.fix-cinema
+{
+	transform: rotate(-72deg);
+}
+
+.cocktail.text
+{
+	position: absolute;
+	transform-origin: 55px 155px;
+}
+
+.fix-cocktail
+{
+	transform: rotate(-108deg);
+}
+
+.enceinte.text
+{
+	position: absolute;
+	transform-origin: 60px 130px;
+}
+
+.fix-enceinte
+{
+	transform: rotate(-144deg);
+}
+
+.food.text
+{
+	position: absolute;
+	transform-origin: 40px 135px;
+}
+
+.fix-food
+{
+	transform: rotate(-180deg);
+}
+
+.monument.text
+{
+	position: absolute;
+	transform-origin: -15px 131px;
+}
+
+.fix-monument
+{
+	transform: rotate(-216deg);
+}
+
+.people.text
+{
+	position: absolute;
+	transform-origin: 13px 175px;
+}
+
+.fix-people
+{
+	transform: rotate(-252deg);
+}
+
+.music.text
+{
+	position: absolute;
+	transform-origin: 28px 168px;
+}
+
+.fix-music
+{
+	transform: rotate(-288deg);
+}
+
+.theatre.text
+{
+	position: absolute;
+	transform-origin: 65px 165px;
+}
+
+.fix-theatre
+{
+	transform: rotate(-324deg);
+}
