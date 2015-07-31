@@ -1,23 +1,70 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../../bower_components/neon-animation/neon-animation-runner-behavior.html">
 
 <dom-module id="app-container">
 <style>
 	:host{
 		display: block;
+		width: 225px;
+		height: 515px;
 	}
 
-	#info > ::content {
+	#container {
+		position: relative;
+	}
+
+	#central {
 		position: absolute;
+		right: 0px;
+		z-index: 2;
+	}
+
+	#central > ::content {
     	width: 200px;
-	    height: 400px;
+    	height: 509px;
         -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
         -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
         box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
         box-sizing: border-box;
 	}
 
-	button {
+	#lateral {
+		position: absolute;
+		right: 200px;
+
+		width: 25px;
+    	height: 515px;
+		overflow: hidden;
+	}
+
+	#lateral .content {
+		position: relative;
+		left: 25px;
+
+		box-sizing: border-box;
+
+		background-color: #FFFFFF;
+		background-image: url("statue-liberte.svg");
+		background-repeat: no-repeat;
+		background-size: 100px;
+		background-position: 5% 115%;
+		-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+		-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+		box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+	}
+
+	#lateral .content > ::content {
+		width: 500px;
+		height: 509px;
+	}
+
+	#tab {
+		position: absolute;
+		top: 475px;
+		left: 5px;
+
+		width: 115px;
+		height: 19px;
+
 		transform: rotate(-90deg);
 		-webkit-transform: rotate(-90deg);
 		-o-transform: rotate(-90deg);
@@ -25,32 +72,50 @@
 	    transform-origin: 0% 0%;
 		-ms-transform-origin: 0% 0%; /* IE 9 */
 	    -webkit-transform-origin: 0% 0%; /* Chrome, Safari, Opera */
-		border: 1px solid;
+
+		padding-left: 20px;
+		padding-top: 2px;
+
+		z-index: 1;
+		color: #1e3856;
+		background-color: white;
+		font-size: 9px;
+		font-weight: bold;
+		border: 1px solid white;
 	    border-top-left-radius: 25px;
 	    border-top-right-radius: 25px;
-		width: 100px;
+	    border-bottom: none;
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+
+	}
+
+	#tab::after {
+		content:'';
+		display: block;
+		position: relative;
+		bottom: -6px;
+		left: -23px;
+
+		width: 145px;
+		height: 6px;
+
 		background-color: white;
-	}
-
-	#detail button {
-		position: relative;
-		z-index: 10;
-		top: 400px;
-		left: -19px;
-	}
-
-	#detail>::content {
-		background-color: red;
-		position: relative;
-		width: 400px;
 	}
 
 </style>
 <template>
-	<div id='info'><content select='app-info'></content></div>
-	<div id='detail'>
-		<button on-click='_toggle'>test</button>
-		<content select='app-detail'></content>
+	<div id='container'>
+		<div id='central'>
+			<content select='app-info'></content>
+		</div>
+		<div id='lateral'>
+			<div id='tab' on-click='onTabClick'>Pour en savoir plus &hellip;</div>
+			<div class="content">
+				<content seclect='app-detail'></content>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -59,25 +124,50 @@
 	    is: 'app-container',
 	    behaviors: [Polymer.NeonAnimationRunnerBehavior],
 	    properties: {
+  			tabOpened: {
+      			type: Boolean,
+      			value: false
+    		},
 		    animationConfig: {
 		    	value: function() {
 		        	return {
-		          		'entry': {
-		            		name: 'slide-left-animation',
-		            		node: this.$.detail,
-		            		timing : {fill: 'forwards'}
-		        		},
-		          		'exit': {
-		            		name: 'slide-right-animation',
-		            		node: this.$.detail
-		            	}
-		        	}
+	                    'entry': {
+	                    	name: 'width-animation',
+	                    	node: Polymer.dom(this.root).querySelector('#lateral'),
+	                    	from: '25px',
+	                    	to: '500px'
+	                	},
+	                  	'exit': {
+	                    	name: 'width-animation',
+	                    	node: Polymer.dom(this.root).querySelector('#lateral'),
+	                    	from: '500px',
+	                    	to: '25px'
+	                    }
+	                }
 		    	}
 			}
 	    },
-	    _toggle: function(event, detail, sender) {
-	    	this.playAnimation('entry');
-	    }
+        listeners: {
+   	    	'neon-animation-finish': '_onAnimationFinish'
+    	},
+
+	    onTabClick: function(event) {
+          	if (!this.tabOpened) {
+        		this.playAnimation('entry');
+        		this.tabOpened = true;
+          	} else {
+	    	    this.playAnimation('exit');
+    	    	this.tabOpened = false;
+       		}
+      	},
+	    _onAnimationFinish: function() {
+	      if (this.tabOpened) {
+	        Polymer.dom(this.root).querySelector('#lateral').style.width = '500px';
+	      } else {
+		    Polymer.dom(this.root).querySelector('#lateral').style.width = '25px';
+	      }
+	    },
+
 	});
 </script>
 </dom-module>

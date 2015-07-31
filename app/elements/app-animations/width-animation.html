@@ -1,0 +1,17 @@
+<script>
+  Polymer({
+    is: 'width-animation',
+    behaviors: [
+      Polymer.NeonAnimationBehavior
+    ],
+    configure: function(config) {
+      var node = config.node;
+
+      this._effect = new KeyframeEffect(node, [
+        {'width': config.from},
+        {'width': config.to}
+      ], this.timingFromConfig(config));
+      return this._effect;
+    }
+  });
+</script>

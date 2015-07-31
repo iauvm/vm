@@ -21,7 +21,8 @@ var gulp = require('gulp'),
    fs = require('fs'),
    glob = require('glob'),
    historyApiFallback = require('connect-history-api-fallback'),
-   svgSprite = require('gulp-svg-sprite');
+   svgSprite = require('gulp-svg-sprite'),
+   compass = require('gulp-compass');
 
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
@@ -46,6 +47,19 @@ var styleTask = function (stylesPath, srcs) {
     .pipe(gulp.dest('dist/' + stylesPath))
     .pipe($.size({title: stylesPath}));
 };
+
+
+// Compile and Automatically Prefix Stylesheets
+gulp.task('compass', function() {
+  gulp.src('./src/*.scss')
+    .pipe(compass({
+      config_file: './config.rb',
+        css: 'dist/styles',
+        sass: 'app/styles/scss'
+    }))
+    .pipe(gulp.dest('dist/styles'));
+});
+
 
 // Compile and Automatically Prefix Stylesheets
 gulp.task('styles', function () {
@@ -197,7 +211,7 @@ gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
  
 // Watch Files For Changes & Reload
-gulp.task('serve', ['styles', 'elements'/*, 'images'*/], function () {
+gulp.task('serve', ['styles', 'elements',/* 'images'*/'compass'] , function () {
   browserSync({
     notify: false,
     logPrefix: 'PSK',
