@@ -13,6 +13,8 @@ RUN apt-get install -y rubygems ruby2.1-dev
 
 RUN gem install compass
 
+RUN npm install -g yo
+
 USER osboxes
 
 RUN git config --global url."https://".insteadOf git://
