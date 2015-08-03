@@ -1,0 +1,183 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<dom-module id="app-home">
+  <style>
+    :host {
+      display: block;
+      color: #123D5A;
+  }
+
+  html, body, div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  b, u, i, center,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td,
+  article, aside, canvas, details, embed, 
+  figure, figcaption, footer, header, hgroup, 
+  menu, nav, output, ruby, section, summary,
+  time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  /* HTML5 display-role reset for older browsers */
+  article, aside, details, figcaption, figure, 
+  footer, header, hgroup, menu, nav, section {
+    display: block;
+  }
+  body {
+    line-height: 1;
+  }
+  ol, ul {
+    list-style: none;
+  }
+  blockquote, q {
+    quotes: none;
+  }
+  blockquote:before, blockquote:after,
+  q:before, q:after {
+    content: '';
+    content: none;
+  }
+  table 
+  {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+
+#content
+{
+  background-color: #d3deea;
+  position: relative;
+  z-index: -1;
+  width: 1050px;
+  height: 744px;
+  padding-top: 215px;
+  box-sizing: border-box;
+}
+
+#logo-iau
+{
+  position: absolute;
+  height: 72px;
+  width: 139px;
+  top: 22px;
+  left: 18px;
+  background-color: white; /* A retirer */ 
+  background-repeat: no-repeat;
+}
+
+#logo-sound
+{
+  height: 49px;
+  width: 49px;
+  position: absolute;
+  top: 22px;
+  left: 976px;
+  background-color: white; /* A retirer */
+}
+
+#block-title
+{
+  height: 139px;
+  width: 902px;
+  margin: auto;
+}
+
+#title
+{
+  height: 139px;
+  width: 770px;
+  display: inline-block;
+}
+
+h1
+{
+  font-family: 'Helvetica'; /* Helvetica 95 Black */
+  font-size: 90px;
+  color: #1e3856;
+  text-transform: uppercase;
+  line-height: 0.8em;
+  text-align: center;
+}
+
+h2 
+{
+  font-family: 'Helvetica'; /* Helvetica 95 Black */
+  font-size: 60px;
+  color: #1e3856;
+  line-height: 1em;
+  text-align: center;
+}
+
+#interrogation-point
+{
+  height: 139px;
+  width: 100px;
+  font-size: 180px; /* 150px */
+  font-family: 'Helvetica'; /* Helvetica 95 Black */
+  float: right;
+  color: #1e3856;
+  display: inline-block;
+  line-height: 0.7em;
+}
+
+#logo-play
+{
+  height: 132px;
+  width: 132px;
+  background-color: white;
+  margin: auto;
+  margin-top: 16px;
+  border-radius: 50%; /* A retirer */
+}
+
+footer
+{
+  background-image: url(); /* A remplir */ 
+  background-repeat: no-repeat;
+  height: 125px;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  background-color: yellow;
+}
+
+  </style>
+
+  <template>
+  <div id="content">
+    <header>
+      <div id="logo-iau"></div>
+      <div id="logo-sound"></div>
+      <div id="block-title">
+        <div id="title">
+          <h1>Vie Culturelle</h1>
+          <h2>Quelle ville vous correspond</h2>
+        </div>
+        <div id="interrogation-point">?</div>
+      </div>
+    </header>
+    <section>
+      <div id="logo-play"></div>
+    </section>
+    <footer>
+      
+    </footer>
+  </div>
+  </template>
+
+<script>
+  Polymer({
+    is: 'app-home'
+  });
+</script>
+</dom-module>
