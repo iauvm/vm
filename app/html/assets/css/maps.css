@@ -62,11 +62,11 @@ h3
 	display: inline-block;
 }
 
-#maps
+#map
 {
 	height: 380px;
 	width: 690px;
-	background-color: white;
+	/*background-color: white;*/
 	margin-top: 30px;
 	margin-left: 15px;
 }
