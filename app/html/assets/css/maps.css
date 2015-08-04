@@ -1,0 +1,83 @@
+#content
+{
+	width: 1050px;
+	height: 744px;
+	background-color: #d3deea;
+	position: relative;
+	z-index: -1;
+}
+
+h1
+{
+	font-family: 'Helvetica'; /* Helvetica 95 Black 28px */
+	font-size: 27px;
+	color: #1e3856;
+	margin-top: 25px;
+	margin-left: 25px;
+	display: inline-block;
+}
+
+h2
+{
+	font-family: 'Helvetica'; /* Helvetica 95 Black 21px */
+	font-size: 41px;
+	color: #ed1c24;
+	margin-left: 24px;
+}
+
+h3
+{
+	font-family: 'Helvetica'; /* HelveticaLightneue Cond 15px */
+	font-size: 15px;
+	color: #1e3856;
+	margin-top: 85px;
+	margin-left: 20px;
+}
+
+#logos-container
+{
+	background-image: url(); /* A remplir */ 
+	background-repeat: no-repeat;
+	float: right;
+	margin-top: 14px;
+	margin-right: 17px;
+}
+
+#logo-sound
+{
+	background-image: url(); /* A remplir */ 
+	background-repeat: no-repeat;
+	height: 42px;
+	width: 42px;
+	background-color: white; /* A Retirer */ 
+	display: inline-block;
+}
+
+#logo-iau
+{
+	height: 42px;
+	width: 42px;
+	margin-left: 3px;	
+	background-color: white; /* A Retirer */ 
+	display: inline-block;
+}
+
+#maps
+{
+	height: 380px;
+	width: 690px;
+	background-color: white;
+	margin-top: 30px;
+	margin-left: 15px;
+}
+
+footer
+{
+	background-image: url(); /* A remplir */ 
+	background-repeat: no-repeat;
+	height: 70px;
+	width: 100%;
+	position: absolute;
+	bottom: 0px;
+	background-color: yellow;
+}
