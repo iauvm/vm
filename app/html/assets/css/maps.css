@@ -1,11 +1,17 @@
-#content
+/*#content
 {
 	width: 1050px;
 	height: 744px;
 	background-color: #d3deea;
 	position: relative;
 	z-index: -1;
+}*/
+
+#content
+{
+	background-color: #d3deea;
 }
+
 
 h1
 {
@@ -62,14 +68,14 @@ h3
 	display: inline-block;
 }
 
-#map
+/*#map
 {
 	height: 380px;
 	width: 690px;
-	/*background-color: white;*/
+	background-color: white;
 	margin-top: 30px;
 	margin-left: 15px;
-}
+}*/
 
 footer
 {

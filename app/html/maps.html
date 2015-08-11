@@ -3,105 +3,76 @@
 <head>
 	<meta charset="UTF-8">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+
 	<link rel="stylesheet" href="assets/css/reset.css">
 	<link rel="stylesheet" href="assets/css/maps.css">
-	<title>Maps</title>
+	<title>Map</title>
 </head>
 <body>
 	<div id="content">
-		<header>
-			<h1>Les 3 villes qui correspondent le plus à vos critères</h1>
-			<div id="logos-container">
-				<div id="logo-sound"></div>
-				<div id="logo-iau"></div>
-			</div>
-			<h2>New York, Istanbul, Buenos Aires</h2>
-		</header>
-		<section>
-			<h3>Cliquez sur une ville pour découvrir son profil</h3>
-			<div id="map"></div>
-		</section>
-		<footer>
-		</footer>
+			<map></map>
 	</div>
-	<script>
+
+	<script>		
 		window.onload = function(){
 
-			var mapColor = '#ffffff';
-			var height = 380;
-			var width = 690;
-			var map = 'custom.geo.json';
+			var width    = 950;
+			var height   = 500;
+			var mapColor = 'white';
 
-			function CalculateStarPoints(centerX, centerY, arms, outerRadius, innerRadius)
-				{
-				   var results = "";
-
-				   var angle = Math.PI / arms;
-
-				   for (var i = 0; i < 2 * arms; i++)
-				   {
-				      // Use outer or inner radius depending on what iteration we are in.
-				      var r = (i & 1) == 0 ? outerRadius : innerRadius;
-				      
-				      var currX = centerX + Math.cos((i-0.5) * angle) * r;
-				      var currY = centerY + Math.sin((i-0.5) * angle) * r;
-
-				      // Our first time we simply append the coordinates, subsequet times
-				      // we append a ", " to distinguish each coordinate pair.
-				      if (i == 0)
-				      {
-				         results = currX + "," + currY;
-				      }
-				      else
-				      {
-				         results += ", " + currX + "," + currY;
-				      }
-				   }
-
-				   return results;
-				}
-			
-			
-
-
-
-
-
-
-			var canvas = d3.select('#map')
+			var canvas = d3.select('map')
 				.append("svg")
 				.attr("width", width)
 				.attr("height", height);
-			
-			var center = d3.geo.centroid(map);
 
-			// var scale = d3.scale.linear().domain([0, 380]).range([2000]);
-			// var rescale = 150*690/2000;
+			var projection = d3.geo.mercator().center([-0.6, 28.7]).rotate([-12,0]).scale(110);
 
-			d3.json('custom.geo.json', function(data) {
+			d3.json('world.geo.json', function(data) {
+
 				var group = canvas.selectAll("g")
 					.data(data.features)
 					.enter()
 					.append("g");
 
-				var projection = d3.geo.mercator().scale(110).translate([690/2, 380/2])
-	            .center([0, 0]);
-
-				var path = d3.geo.path().projection(projection);
-
-				var areas = group.append("path")
-					.attr('d', path)
-					.attr('class', "area")
+				group.append("path")
+					.attr('d', d3.geo.path().projection(projection))
+					.attr('stroke', mapColor)
 					.attr('fill', mapColor);
+			});
 
-				var star = canvas.append("svg:polygon")
-					.attr("id", "star_1")
-					.attr('fill', '#ee2722')
-					.attr("visibility", "visible")
-					.attr("points", CalculateStarPoints(60, 20, 5, 10, 5));
+			d3.json("cities.geo.json", function(data) {
+				var group = canvas.selectAll('svg')
+					.data(data.features)
+					.enter()
+					.append('g')
+					.attr('transform', function(d, i) {  return 'translate(' + projection(d.geometry.coordinates)[0] + ',' + projection(d.geometry.coordinates)[1] + ')'; });
 
+				group
+					.append('text')
+					.text(function(d) { return d.properties.name; })
+					.attr('font-size', 13)
+					.attr('font-family', 'HelveticaNeue LightCond')
+					.attr('opacity', 0.25)
+					.attr("x", function(d) {
+						return d.properties.offsetX;
+					 })
+					.attr("y", function(d) {
+						return d.properties.offsetY;
+					});
+
+				var centroid = d3.geom.polygon([[97.3, 0], [127.4, 60.9], [194.6, 70.7], [145.9, 118.1], [157.4, 185.1], [97.3, 153.5], [37.2, 185.1], [48.6, 118.1], [0, 70.7], [67.2, 60.9]]).centroid();
+
+				group
+					.append('polygon')
+					.attr('points', '97.3,0 127.4,60.9 194.6,70.7 145.9,118.1 157.4,185.1 97.3,153.5 37.2,185.1 48.6,118.1 0,70.7 67.2,60.9 ')
+					.attr('transform', 'matrix(0.0573612,0,0,0.05721815,-0.0034523,0.00544948) translate(' + -centroid[0] + ', ' + -centroid[1] + ')')
+					.attr('opacity', 0.5)
+					.attr('fill', '#638fa6');
 			});
 		};
 	</script>
 </body>
 </html>
+
+
+
