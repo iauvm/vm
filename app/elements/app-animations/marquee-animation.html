@@ -1,0 +1,17 @@
+<script>
+  Polymer({
+    is: 'marquee-animation',
+    behaviors: [
+      Polymer.NeonAnimationBehavior
+    ],
+    configure: function(config) {
+      var node = config.node;
+
+      this._effect = new KeyframeEffect(node, [
+          {'margin-left': '0px'},
+          {'margin-left': '100%'}
+      ], this.timingFromConfig(config));
+      return this._effect;
+    }
+  });
+</script>

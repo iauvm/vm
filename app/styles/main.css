@@ -12,3 +12,33 @@ body {
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #333;
 }
+
+.container {
+	position: relative;
+	background-color: #d3deea;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+	width: 1050px;
+	height: 750px;
+	margin: auto;
+
+}
+
+app-box {
+	position: absolute;
+	top: 50px;
+	right: 40px;
+	z-index: 1;
+
+}
+
+app-map {
+	position: absolute;
+}
+
+app-footer {
+	position:absolute;
+	bottom: 50px;
+	z-index: 100;
+}

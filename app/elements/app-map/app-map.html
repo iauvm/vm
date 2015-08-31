@@ -1,0 +1,120 @@
+<dom-module id="app-map">
+	<style>
+
+	:host {
+		display: block;
+		width: 1050px;
+		height: 750px;
+	}
+	header {
+		margin-left: 40px;
+		margin-top: 18px;
+	}
+	header, h1 {
+		color: #1e3856;	
+	}
+	header h1 {
+		font-family: 'Helvetica'; /*'helvetica95 black'*/
+		margin:0;
+		font-weight: lighter;	
+		font-size: 1.7em;
+	}
+	header h2 {
+		font-family: 'Helvetica'; /*'helvetica95 black'*/
+		margin: 0px;
+		line-height: 0.8em;
+		color: #ed1c24;
+		font-weight: lighter;
+		font-size: 41px;
+	}
+	section {
+		margin-top: 90px;
+	}
+	section header {
+		margin-bottom: 20px;
+	}
+
+	</style>
+	<template>
+		<header>
+			<h1>Les 3 villes qui correspondent à vos critères</h1>
+			<h2>New York, Istanbul, Buenos Aires</h2>
+		</header>
+		<section>
+			<header>Cliquez sur ville découvrir son profil</header>
+			<map></map>
+		</section>
+	</template>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.js"></script>
+	<script>
+		Polymer({
+			is: 'app-map',
+			ready: function() {
+
+				var width    = 900;
+				var height   = 500;
+				var mapColor = 'white';
+
+				var canvas = d3.select(this.$$('map'))
+					.append("svg")
+					.attr("width", width)
+					.attr("height", height);
+
+				var projection = d3.geo.mercator().rotate([-12, 0]).scale(110).translate([355, 255]);
+
+				d3.json('json/world.geo.json', function(data) {
+
+					var group = canvas.selectAll("g")
+						.data(data.features)
+						.enter()
+						.append("g");
+
+					group.append("path")
+						.attr('d', d3.geo.path().projection(projection))
+						.attr('stroke', mapColor)
+						.attr('fill', mapColor);
+				});
+
+				d3.json("json/cities.geo.json", function(data) {
+					var group = canvas.selectAll('svg')
+						.data(data.features)
+						.enter()
+						.append('g')
+						.attr('class', 'city')
+						.attr('transform', function(d, i) {  return 'translate(' + projection(d.geometry.coordinates)[0] + ',' + projection(d.geometry.coordinates)[1] + ')'; });
+
+					group
+						.append('text')
+						.text(function(d) { return d.properties.name; })
+						.attr('font-size', 16)
+						.attr('font-family', 'HelveticaNeue LightCond')
+						.attr('opacity', 0.25)
+						.attr("x", function(d,i) {
+							return d.properties.offsetX;
+						 })
+						.attr("y", function(d,i) {
+							return d.properties.offsetY;
+						});
+
+					var centroid = d3.geom.polygon([[97.3, 0], [127.4, 60.9], [194.6, 70.7], [145.9, 118.1], [157.4, 185.1], [97.3, 153.5], [37.2, 185.1], [48.6, 118.1], [0, 70.7], [67.2, 60.9]]).centroid();
+
+					group
+						.append('polygon')
+						.attr('points', '97.3,0 127.4,60.9 194.6,70.7 145.9,118.1 157.4,185.1 97.3,153.5 37.2,185.1 48.6,118.1 0,70.7 67.2,60.9 ')
+						.attr('transform', 'matrix(0.0573612,0,0,0.05721815,-0.0034523,0.00544948) translate(' + -centroid[0] + ', ' + -centroid[1] + ')')
+						.attr('opacity', 0.5)
+						.attr('fill', '#638fa6');
+				});
+			},
+			  attached: function() {
+			  	console.log(this.$$('svg'));
+    			var cities = this.$$('.city');
+    			console.log(cities);
+				for (city in cities) {
+					console.log(city);
+					city.fill = 'red';
+				}
+  			}
+		});
+	</script>
+</dom-module>

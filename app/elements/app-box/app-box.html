@@ -1,0 +1,68 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<dom-module id="app-box">
+<style>
+	:host {
+		display: block;
+	}
+	neon-animated-pages {
+		position: relative;
+	}
+	app-front, app-back {
+		backface-visibility: hidden;
+		position: absolute;
+		top: 50px;
+		right: 40px;
+	}
+</style>
+<template>
+	<neon-animated-pages id="box" selected="0">
+		<app-front id="front" city="{{city}}" front></app-front>
+		<app-back id="back"></app-back>
+	</neon-animated-pages>
+	<button on-click="clicked">flip</button>
+</template>
+
+<script>
+	Polymer({
+	    is: 'app-box',
+	    behaviors: [Polymer.NeonAnimationRunnerBehavior],
+	    properties: {
+    		city: {
+    			type: Object,
+    			value: function() { return {}; }
+    		}
+	    },
+	    ready: function() {
+	    	this.$.box._onNeonAnimationFinish = this._onNeonAnimationFinish;
+	    },
+	    clicked: function(event) {
+	    	this.$.box.selectNext();
+      	},
+	    _onNeonAnimationFinish: function(event) {
+	      if (this._squelchNextFinishEvent) {
+	        this._squelchNextFinishEvent = false;
+	        return;
+	      }
+
+		if (this.$.front.front) {
+              this.$.front.style.transform = "rotateY(0deg)";
+          } else {
+              this.$.front.style.transform = "rotateY(180deg)";
+          }
+          this.$.front.front=!this.$.front.front;
+
+		if (this.$.back.front) {
+              this.$.back.style.transform = "rotateY(0deg)";
+          } else {
+              this.$.back.style.transform = "rotateY(180deg)";
+          }
+          this.$.back.front=!this.$.back.front;
+
+
+
+	      this._completeSelectedChanged(event.detail.fromPage, event.detail.toPage);
+	    }
+	});
+</script>
+</dom-module>

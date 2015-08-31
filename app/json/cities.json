@@ -1,0 +1,34 @@
+{
+  "info": {
+    "name": "New York",
+    "country": "USA",
+    "population": 213,
+    "surface": 4554,
+    "criterias": [
+      {"value": 3},
+      {"value": 3},
+      {"value": 3},
+      {"value": 3},
+      {"value": 3},
+      {"value": 2},
+      {"value": 2},
+      {"value": 3},
+      {"value": 3},
+      {"value": 3}
+      ],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis laudantium veniam beatae facere quos. Blanditiis magnam recusandae, praesentium, facere perferendis consequuntur corporis in reprehenderit omnis voluptas, vel minima quas maiores.",
+    "author": "zsdfsdf"
+  },
+  "detail": {
+    "images": [
+      "////test.png",
+      "////test.png",
+      "////test.png"      
+    ],
+    "paragraphs": [
+      "New-York has long tied its rising power and economic success to investments in arts and culture. In its early nineteenth century aspirations to rival  Boston, and later the great cities of Europe, New York’s cultural life has been seen as a symbol of the city’s wider vitality. From Carnegie Hall to MoMA, public-private partnerships linking civic ambition and wealthy philanthropists have endowed the city with world-class non-profit cultural institutions. Allied to this, New York’s hugely dynamic cultural scene finds expression in everything from Broadway theatre to hip hop. The city is also a giant commercial marketplace for art and creative industries, from art auctions to fashion, design and advertising.",
+      "This creative energy is not just found in Manhattan. The fluid association of creative activity with particular neighbourhoods has served to define and redefine parts of the city. From Greenwich Village in the 1950s and ‘60s to SoHo and TriBeCa in the 1970s and ‘80s to Williamsburg and Dumbo in the 2000s, New York’s creativity shifts and re-forms from place to place. This process continues; the presence of artists is currently helping to revive Bushwick, Brooklyn; Long Island City, Queens; Mott Haven in the Bronx; and St. George, Staten Island.",
+      "This fluidity is partly driven by the city’s enormous diversity. New York has been one of the primary gateways to America for immigrants for centuries, and it continues to have a huge foreign-born population – currently 37 per cent of the total – who bring their own cultures to add to the city’s mix. Residents and visitors alike are"
+    ]
+  }
+}

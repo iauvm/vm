@@ -1,13 +1,4 @@
 <!doctype html>
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
 
 <html lang="fr">
 
@@ -53,21 +44,47 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <!-- will be replaced with elements/elements.vulcanized.html -->
   <link rel="import" href="elements/elements.html">
   <!-- endreplace-->
+
+    <style>
+      neon-animated-pages {
+        height: 100%;
+      }
+    </style>
+
 </head>
 
-<body unresolved class="fullbleed layout horizontal-reverse">
-<!--body unresolved class="fullbleed"-->
+<!--body unresolved class="fullbleed layout horizontal-reverse"-->
+<body unresolved class="fullbleed">
   <span id="browser-sync-binding"></span>
-  <template is="dom-bind" id="app">
-
-<app-selection></app-selection>
-
-
-  </template>
-
+    <template is="dom-bind" id="app">
+        <iron-ajax auto handle-as="json" url="http://localhost:3000/json/cities.json" last-response="{{city}}" method="GET"></iron-ajax>
+        <div class='container'>
+            <!--app-footer></app-footer-->
+            <app-map></app-map>
+            <app-box city="{{city}}"></app-box>
+            <!--neon-animated-pages id="pages" selected="0">
+                <animated-grid on-tile-click="_onTileClick"></animated-grid>
+                <fullsize-page-with-card id="fullsize-card" hero-id="hero" on-click="_onFullsizeClick"></fullsize-page-with-card>
+            </neon-animated-pages-->
+        </div>
+    </template>
   <!-- build:js scripts/app.js -->
   <script src="scripts/app.js"></script>
   <!-- endbuild-->
+  <script>
+
+      var scope = document.querySelector('template[is="dom-bind"]');
+
+      scope._onTileClick = function(event) {
+        this.$['fullsize-card'].color = event.detail.data.color;
+        this.$.pages.selected = 1;
+      };
+
+      scope._onFullsizeClick = function(event) {
+        this.$.pages.selected = 0;
+      };
+
+  </script>
 </body>
 
 </html>

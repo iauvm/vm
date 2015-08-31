@@ -1,15 +1,13 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 
-<dom-module id="app-container">
+<dom-module id="app-infoo">
 <style>
 	:host{
 		display: block;
-		width: 225px;
-		height: 515px;
-	}
-
-	#container {
+		width: 330px;
+		height: 628px;
 		position: relative;
+
 	}
 
 	#central {
@@ -19,52 +17,44 @@
 	}
 
 	#central > ::content {
-    	width: 200px;
-    	height: 509px;
+    	width: 300px;
+    	height: 628px;
+    	padding: 1em;
         -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
         -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
         box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
         box-sizing: border-box;
+        border-radius: 15px;
 	}
 
 	#lateral {
 		position: absolute;
-		right: 200px;
-
-		width: 25px;
-    	height: 515px;
+		right: 300px;
+		width: 30px;
+    	height: 628px;
 		overflow: hidden;
 	}
 
 	#lateral .content {
 		position: relative;
-		left: 25px;
-
-		box-sizing: border-box;
-
-		background-color: #FFFFFF;
-		background-image: url("statue-liberte.svg");
-		background-repeat: no-repeat;
-		background-size: 100px;
-		background-position: 5% 115%;
+		left: 30px;
 		-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 		-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 		box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 	}
 
 	#lateral .content > ::content {
-		width: 500px;
-		height: 509px;
+		width: 600px;
+		height: 600px;
+		top: 14px;
 	}
 
 	#tab {
 		position: absolute;
-		top: 475px;
+		top: 575px;
 		left: 5px;
-
-		width: 115px;
-		height: 19px;
-
+		width: 175px;
+		height: 30px;
 		transform: rotate(-90deg);
 		-webkit-transform: rotate(-90deg);
 		-o-transform: rotate(-90deg);
@@ -72,14 +62,13 @@
 	    transform-origin: 0% 0%;
 		-ms-transform-origin: 0% 0%; /* IE 9 */
 	    -webkit-transform-origin: 0% 0%; /* Chrome, Safari, Opera */
-
+		box-sizing: border-box;
 		padding-left: 20px;
 		padding-top: 2px;
-
 		z-index: 1;
 		color: #1e3856;
 		background-color: white;
-		font-size: 9px;
+		font-size: 0.8em;
 		font-weight: bold;
 		border: 1px solid white;
 	    border-top-left-radius: 25px;
@@ -95,33 +84,22 @@
 		content:'';
 		display: block;
 		position: relative;
-		bottom: -6px;
+		bottom: -8px;
 		left: -23px;
-
-		width: 145px;
-		height: 6px;
-
+		width: 182px;
+		height: 10px;
 		background-color: white;
 	}
 
 </style>
 <template>
-	<div id='container'>
-		<div id='central'>
-			<content select='app-info'></content>
-		</div>
-		<div id='lateral'>
-			<div id='tab' on-click='onTabClick'>Pour en savoir plus &hellip;</div>
-			<div class="content">
-				<content seclect='app-detail'></content>
-			</div>
-		</div>
-	</div>
+	<app-front></app-front>
+	<app-back></app-back>
 </template>
 
 <script>
 	Polymer({
-	    is: 'app-container',
+	    is: 'app-infoo',
 	    behaviors: [Polymer.NeonAnimationRunnerBehavior],
 	    properties: {
   			tabOpened: {
@@ -134,14 +112,14 @@
 	                    'entry': {
 	                    	name: 'width-animation',
 	                    	node: Polymer.dom(this.root).querySelector('#lateral'),
-	                    	from: '25px',
-	                    	to: '500px'
+	                    	from: '30px',
+	                    	to: '630px'
 	                	},
 	                  	'exit': {
 	                    	name: 'width-animation',
 	                    	node: Polymer.dom(this.root).querySelector('#lateral'),
-	                    	from: '500px',
-	                    	to: '25px'
+	                    	from: '630px',
+	                    	to: '30px'
 	                    }
 	                }
 		    	}
@@ -162,9 +140,9 @@
       	},
 	    _onAnimationFinish: function() {
 	      if (this.tabOpened) {
-	        Polymer.dom(this.root).querySelector('#lateral').style.width = '500px';
+	        Polymer.dom(this.root).querySelector('#lateral').style.width = '630px';
 	      } else {
-		    Polymer.dom(this.root).querySelector('#lateral').style.width = '25px';
+		    Polymer.dom(this.root).querySelector('#lateral').style.width = '30px';
 	      }
 	    },
 

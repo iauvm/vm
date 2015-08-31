@@ -1,0 +1,61 @@
+<link rel='import' href='../../../bower_components/polymer/polymer.html'>
+
+<dom-module id='app-footer'>
+    <style>
+        :host {
+            display: block;
+            margin: 0px;
+            padding: 0px;
+
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            overflow-x: hidden;
+            bottom: 0px;
+
+        }
+
+        object {
+            position: absolute;
+        }
+
+    </style>
+    <template>
+        <footer>
+            <object id="monuments1" type="image/svg+xml" data="images/svg/monuments.svg"></object>
+            <object id="monuments2" type="image/svg+xml" data="images/svg/monuments.svg"></object>
+        </footer>
+    </template>
+    <script>
+        Polymer({
+            is: 'app-footer',
+            behaviors: [Polymer.NeonAnimationRunnerBehavior],
+            properties: {
+                animationConfig: {
+                    value: function() {
+                        return [{
+                                name: 'slide-from-left-animation',
+                                node: Polymer.dom(this.root).querySelector('#monuments1'),
+                                timing: {
+                                    duration: 20000,
+                                    iterations: Infinity,
+                                    easing: 'linear'
+                                }
+                            },{
+                                name: 'slide-right-animation',
+                                node: Polymer.dom(this.root).querySelector('#monuments2'),
+                                timing: {
+                                    duration: 20000,
+                                    iterations: Infinity,
+                                    easing: 'linear'
+                                }
+                            }];
+                    }
+                }
+            },
+            ready: function() {
+                this.playAnimation();
+            }
+        });
+    </script>
+</dom-module>

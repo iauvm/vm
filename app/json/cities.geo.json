@@ -1,0 +1,269 @@
+{
+	"type": "FeatureCollection",
+    "features": [{
+        "type": "Feature",
+       	"geometry": {
+       		"type": "Point",
+       		"coordinates": [-43.44844781, -22.9112728]
+        },
+       	"properties": {
+     		"name": "Rio De Janeiro",
+            "offsetX": 7,
+            "offsetY": -2
+    	}
+    }, {
+        "type": "Feature",
+       	"geometry": {
+    		"type": "Point",
+    		"coordinates": [2.3522219, 48.8566140]
+    	},
+    	"properties": {
+    		"name": "Paris",
+            "offsetX": -35,
+            "offsetY": 6
+   		}
+	}, {
+    	"type": "Feature",
+    	"geometry": {
+    		"type": "Point",
+    		"coordinates": [-74.0059413, 40.7127837]
+    	},
+    	"properties": {
+    		"name": "New York",
+            "offsetX": 7,
+            "offsetY": 10
+   		}
+	}, {
+    	"type": "Feature",
+    	"geometry": {
+    		"type": "Point",
+    		"coordinates": [139.6917064, 35.6894875]
+    	},
+    	"properties": {
+    		"name": "Tokyo",
+            "offsetX": 7,
+            "offsetY": 0
+   		}
+	}, {
+    	"type": "Feature",
+    	"geometry": {
+    		"type": "Point",
+    		"coordinates": [-118.2436849, 34.0522342]
+    	},
+    	"properties": {
+    		"name": "Los Angeles",
+            "offsetX": -78,
+            "offsetY": 0
+   		}
+	}, {
+    	"type": "Feature",
+    	"geometry": {
+    		"type": "Point",
+    		"coordinates": [-74.0720920, 4.7109886]
+    	},
+    	"properties": {
+    		"name": "Bogota",
+            "offsetX": -50,
+            "offsetY": 3
+   		}
+	}, {
+    	"type": "Feature",
+    	"geometry": {
+    		"type": "Point",
+    		"coordinates": [-0.1277583, 51.5073509]
+    	},
+    	"properties": {
+    		"name": "Londres",
+            "offsetX": -55,
+            "offsetY": 2
+   		}
+	}, {
+    	"type": "Feature",
+    	"geometry": {
+    		"type": "Point",
+    		"coordinates": [-3.7037902, 40.4167754]
+    	},
+    	"properties": {
+    		"name": "Madrid",
+            "offsetX": -47,
+            "offsetY": 0
+   		}
+	}, {
+    	"type": "Feature",
+    	"geometry": {
+    		"type": "Point",
+    		"coordinates": [-58.370256, -34.608051]
+    	},
+    	"properties": {
+    		"name": "Buenos Aires",
+            "offsetX": 5,
+            "offsetY": 12
+   		}
+	}, {
+    	"type": "Feature",
+    	"geometry": {
+    		"type": "Point",
+    		"coordinates": [72.8776559, 19.0759837]
+    	},
+    	"properties": {
+    		"name": "Mumbai",
+            "offsetX": -55,
+            "offsetY": 5
+   		}
+	}, {
+    	"type": "Feature",
+    	"geometry": {
+    		"type": "Point",
+    		"coordinates": [103.8198360, 1.3520830]
+    	},
+    	"properties": {
+    		"name": "Singapour",
+            "offsetX": -62,
+            "offsetY": 0
+   		}
+	}, {
+    	"type": "Feature",
+    	"geometry": {
+    		"type": "Point",
+    		"coordinates": [114.1094970, 22.3964280]
+    	},
+    	"properties": {
+    		"name": "Hong Kong",
+            "offsetX": 7,
+            "offsetY": 0
+   		}
+	}, {
+    	"type": "Feature",
+    	"geometry": {
+    		"type": "Point",
+    		"coordinates": [151.2069902, -33.8674869]
+    	},
+    	"properties": {
+    		"name": "Sydney",
+            "offsetX": 7,
+            "offsetY": 0
+   		}
+	}, {
+    	"type": "Feature",
+    	"geometry": {
+    		"type": "Point",
+    		"coordinates": [126.9779692, 37.5665350]
+    	},
+    	"properties": {
+    		"name": "Seoul",
+            "offsetX": -40,
+            "offsetY": -4
+   		}
+	}, {
+    	"type": "Feature",
+    	"geometry": {
+    		"type": "Point",
+    		"coordinates": [121.4580600, 31.2222200]
+    	},
+    	"properties": {
+    		"name": "Shangai",
+            "offsetX": 7,
+            "offsetY": 0
+   		}
+	}, {
+    	"type": "Feature",
+    	"geometry": {
+    		"type": "Point",
+    		"coordinates": [13.4049540, 52.5200066]
+    	},
+    	"properties": {
+    		"name": "Berlin",
+            "offsetX": 6,
+            "offsetY": 11
+   		}
+	}, {
+    	"type": "Feature",
+    	"geometry": {
+    		"type": "Point",
+    		"coordinates": [28.0473051, -26.2041028]
+    	},
+    	"properties": {
+    		"name": "Johannesburg",
+            "offsetX": 7,
+            "offsetY": 10
+   		}
+	}, {
+    	"type": "Feature",
+    	"geometry": {
+    		"type": "Point",
+    		"coordinates": [-79.3831843, 43.6532260]
+    	},
+    	"properties": {
+    		"name": "Toronto",
+            "offsetX": -52,
+            "offsetY": 0
+   		}
+	}, {
+    	"type": "Feature",
+    	"geometry": {
+    		"type": "Point",
+    		"coordinates": [-73.5672560, 45.5016889]
+    	},
+    	"properties": {
+    		"name": "Montreal",
+            "offsetX": 5,
+            "offsetY": -5
+   		}
+	}, {
+    	"type": "Feature",
+    	"geometry": {
+    		"type": "Point",
+    		"coordinates": [28.9783589, 41.0082376]
+    	},
+    	"properties": {
+    		"name": "Istanbul",
+            "offsetX": 7,
+            "offsetY": 0
+   		}
+	}, {
+    	"type": "Feature",
+    	"geometry": {
+    		"type": "Point",
+    		"coordinates": [18.0685808, 59.3293235]
+    	},
+    	"properties": {
+    		"name": "Stockholm",
+            "offsetX": -65,
+            "offsetY": -5
+   		}
+	}, {
+    	"type": "Feature",
+    	"geometry": {
+    		"type": "Point",
+    		"coordinates": [-46.6333094, -23.5505199]
+    	},
+    	"properties": {
+    		"name": "Sao Polo",
+            "offsetX": -55,
+            "offsetY": 5
+   		}
+	}, {
+    	"type": "Feature",
+    	"geometry": {
+    		"type": "Point",
+    		"coordinates": [4.8951679, 52.3702157]
+    	},
+    	"properties": {
+    		"name": "Amsterdam",
+            "offsetX": -70,
+            "offsetY": -7
+   		}
+	}, {
+    	"type": "Feature",
+    	"geometry": {
+    		"type": "Point",
+    		"coordinates": [37.6173000, 55.7558260]
+    	},
+    	"properties": {
+    		"name": "Moscou",
+            "offsetX": 7,
+            "offsetY": 0
+   		}
+	}
+    ]
+}

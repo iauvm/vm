@@ -1,0 +1,106 @@
+<dom-module id="x-slider">
+
+    <style>
+       :host {
+          display: block;
+          width: 500px;
+          height: 500px;
+       }
+
+       .x-slider-button {
+          float: left;
+          margin-left: 2px;
+          margin-top: 5px;
+          margin-right: 5px;
+          vertical-align: center;
+          border-radius: 4px;
+          border: 1px solid rgb(100, 100, 180);
+          background: rgba(255, 255, 0, 0.2);
+          box-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+          cursor: pointer;
+          width: 25px;
+          height: 20px;
+       }
+
+       .x-slider-button:hover {
+          background: rgba(255, 255, 0, 0.4);
+       }
+
+       #xSliderDiv {
+          position: relative;
+          float: right;
+          width: 80%;
+          height: 65%;
+       } 
+    </style>
+
+
+  <template>
+    <div id='x-slider-buttons-div' style='width: 350px; height: 50px;'>
+       <button class='x-slider-button' id='xSliderMinusButton'>-</button>
+       <button class='x-slider-button' id='xSliderPlusButton'/>+</button>
+       <div id='xSliderDiv'></div>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'x-slider',
+      properties: {
+        'width': 350,
+        'height': 50,
+        'strokeColor': 'blue',
+        'fillColor': 'cornflowerblue'
+      },
+
+        ready: function () { 
+
+          var COREHTML5 = COREHTML5 || {};
+          COREHTML5.Slider = function(strokeStyle, fillStyle,
+                                      knobPercent, knobAnimationDuration)
+          {
+             var knobPercent = knobPercent || 0;
+             var knobAnimationDuration = knobAnimationDuration || 1000; // milliseconds
+
+             this.railCanvas = document.createElement('canvas');
+             this.railContext = this.railCanvas.getContext('2d');
+             this.changeEventListeners = [];
+
+             this.initializeConstants();
+             this.initializeStrokeAndFillStyles(strokeStyle, fillStyle);
+             this.initializeKnob(knobPercent, knobAnimationDuration);
+
+             this.createDOMTree();
+             this.addMouseListeners();
+             this.addKnobTransitionListeners();
+          };
+
+              var self = this,
+                  slider = new COREHTML5.Slider(this.strokeColor, 
+                                                this.fillColor, 0);
+
+              setTimeout( function () { // This timeout is a hack
+                slider.appendTo(self.$.xSliderDiv);
+                slider.draw();
+              }, 200);
+
+              this.$.xSliderMinusButton.onclick = function () {
+                if (slider.knobPercent >= 0.1) {
+                  slider.knobPercent -= 0.1;
+                  slider.erase();
+                  slider.draw();
+                }
+              };
+
+              this.$.xSliderPlusButton.onclick = function () {
+                if (slider.knobPercent <= 0.9) {
+                  slider.knobPercent += 0.1;
+                  slider.erase();
+                  slider.draw();
+                }
+              };
+            }
+      });
+
+  </script>
+</dom-module>

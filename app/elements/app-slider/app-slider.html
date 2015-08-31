@@ -1,0 +1,175 @@
+<dom-module id="app-slider">
+
+    <style>
+
+:host {
+  display: block;
+  height: 64px;
+  position: relative;
+  bottom:-20px;
+}
+
+.slider {
+  display: inline-block;
+  position: relative;
+}
+
+iron-icon {
+  float: left;
+}
+
+input {
+  position: absolute;
+  width: 139px;
+  height: 12px;
+}
+
+input:hover {
+  cursor: none;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  width: 135px;
+  height: 12px;
+  position: absolute;
+  z-index: 1;
+  border-radius: 12px;
+  background-color: transparent;  
+}
+
+input[type=range]:focus {
+  -webkit-appearance: none;
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  border: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 9px;
+  width: 9px;
+  border-radius: 50%;
+  background: #ea1e2e;
+  cursor: pointer;
+}
+
+input::before, input::after {
+  display: block;
+  position: absolute;
+  color: #1e3856;
+  top:-32px;
+  font-size: 2.3em;
+  cursor:pointer;
+}
+
+input::before {
+  content:'-';
+  left: 0px;
+}
+
+input::after {
+  content:'+';
+  right: -8px;
+}
+
+.thumb {
+  position: absolute;
+  width: 139px;
+  height: 12px;
+  top:3px;
+  left:-2px;
+  background: #39577a;
+  border-radius: 12px;
+}
+
+.circle, .thumb::before, .thumb::after {
+  position: absolute;
+  top: 2px;
+  width: 7.5px;
+  height: 7.5px;
+  background: #39577a;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.circle {
+      margin-left:67px;
+}
+
+.thumb::before, .thumb::after {
+  display: inline-block;
+  content:'';
+}
+
+.thumb::before {
+  left:2px;
+}
+
+.thumb::after {
+  right:2px;
+}
+
+iron-icon {
+  -webkit-filter: drop-shadow( 0px 0px 3px rgba(0,0,0,.7) );
+  filter: drop-shadow( 0px 0px 3px rgba(0,0,0,.7) );
+  --iron-icon-width: 64px;
+  --iron-icon-height: 64px;
+  bottom: 15px;
+  margin-right: 8px;
+}
+
+    </style>
+
+
+  <template>
+      <div class="slider">
+        <input type='range' min='0' max='2' value='{{value}}' step='1' on-track='_prevent' on-down='_prevent'>
+        <div class='thumb'><div class='circle'></div></div>        
+      </div>
+      <iron-icon icon="{{name}}"></iron-icon>
+<!--       <div class='before' on-click="stepDown" style="">-</div>
+      <div class='after' on-click="stepUp" style="cursor:pointer">+</div> -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'app-slider',
+      properties: {
+        'name': {
+          type: String
+        },
+        'value': {
+          type: Number,
+          notify: true
+        }
+      },
+
+      ready: function () {
+        var input = Polymer.dom(this.root).querySelector('input');
+        input.addEventListener('click', function(e) {
+          if (e.offsetY < 0) {
+            if (  e.offsetX < (e.target.offsetLeft + e.target.offsetWidth / 2 )) {
+              e.target.parentElement.children[0].stepDown();
+            } else {
+              e.target.parentElement.children[0].stepUp();
+            }
+            this.value = e.target.value;
+          }
+        });
+      },
+      _prevent: function (e) {
+          e.preventDefault();
+      }
+    });
+  </script>
+</dom-module>

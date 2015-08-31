@@ -1,0 +1,292 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<dom-module id="app-back">
+<style>
+
+  html, body, div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  b, u, i, center,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td,
+  article, aside, canvas, details, embed, 
+  figure, figcaption, footer, header, hgroup, 
+  menu, nav, output, ruby, section, summary,
+  time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  /* HTML5 display-role reset for older browsers */
+  article, aside, details, figcaption, figure, 
+  footer, header, hgroup, menu, nav, section {
+    display: block;
+  }
+  body {
+    line-height: 1;
+  }
+  ol, ul {
+    list-style: none;
+  }
+  blockquote, q {
+    quotes: none;
+  }
+  blockquote:before, blockquote:after,
+  q:before, q:after {
+    content: '';
+    content: none;
+  }
+  table 
+  {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+    :host {
+      display: block;
+      position: relative;
+
+      width: 300px;
+      height: 628px;
+
+      color: #123D5A;
+      color: white;
+      background-color: #638fa6;
+
+      -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+      box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+      box-sizing: border-box;
+      border-radius: 15px;
+      overflow: hidden;
+      padding: 15px;
+
+
+  }
+
+h1 {
+	font-size: 1.5em;
+}
+
+h2 {
+	font-size: 1.2em;
+}
+
+iron-icon {
+	display: block;
+	transition: opacity 0.3s;
+}
+
+iron-icon.selected {
+	opacity: 0.5;
+}
+
+
+
+input[type=range] {
+  -webkit-appearance: none;
+  width: 135px;
+  height: 12px;
+  position: absolute;
+  z-index: 1;
+  border-radius: 12px;
+  background-color: transparent;  
+}
+
+input[type=range]:focus {
+  -webkit-appearance: none;
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+	  -webkit-appearance: none;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+	-webkit-appearance: none;
+	border: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 9px;
+  width: 9px;
+  border-radius: 50%;
+  background: #ea1e2e;
+  cursor: pointer;
+  margin-top: 2.3px;
+}
+
+.slider .before, .slider .after{
+	display: block;
+	position: absolute;
+	color: #39577a;
+	top:-16px;
+}
+
+.slider .before{
+	left: 0px;
+}
+
+.slider .after{
+	right: 0px;
+}
+
+.slider {
+	  position: relative;
+	  top: 15px;
+	  left: 30px;
+	  width: 139px;
+    height: 12px;
+}
+
+.thumb {
+  position: absolute;
+  height: 12px;
+  width: 100%;
+  top:3px;
+  background: #39577a;
+  border-radius: 12px;
+}
+
+.thumb .circle {
+	display: inline-block;
+	width: 7.5px;
+	height: 7.5px;
+	position: relative;
+	bottom: 5px;
+	left:2px;
+	margin-right: 56px;
+	border-radius: 50%;
+	background-color: white;
+}
+
+.thumb .circle:last-of-type {
+	margin-right: 0px;
+}
+
+iron-icon {
+    -webkit-filter: drop-shadow( 0px 0px 3px rgba(0,0,0,.7) );
+    filter: drop-shadow( 0px 0px 3px rgba(0,0,0,.7) );
+  --iron-icon-width: 64px;
+  --iron-icon-height: 64px;
+}
+
+.criterias {
+	height: 230px;
+}
+
+iron-icon {
+  display: inline-block;
+}
+
+section h1 {
+  margin-bottom: 25px;
+}
+
+</style>
+<template>
+    <section>
+    	<header>
+      		<h1>Critères selectionnés</h1>
+      		<h2>Précisez le degré d'importance</h2>
+     	</header>
+     	<div class="criterias">
+			<template id='criterias' is='dom-repeat' items='{{selected}}'>
+				<app-slider name="{{item.icon}}" value="{{value}}"></app-slider>
+			</template>
+		</div>
+	</section>
+
+	<section>
+		<h1>Modifiez vos critères</h1>
+		<iron-selector selected-class='selected' selectable='iron-icon'>
+	    	<iron-icon icon='criterias:theatre'></iron-icon></li>
+	        <iron-icon icon='criterias:music'></iron-icon></li>
+	        <iron-icon icon='criterias:cinema'></iron-icon></li>
+	        <iron-icon icon='criterias:monument'></iron-icon></li>
+	        <iron-icon icon='criterias:food'></iron-icon></li>
+	        <iron-icon icon='criterias:castle'></iron-icon></li>
+	        <iron-icon icon='criterias:book'></iron-icon></li>
+	        <iron-icon icon='criterias:people'></iron-icon></li>
+	        <iron-icon icon='criterias:cocktail'></iron-icon></li>
+	        <iron-icon icon='criterias:enceinte'></iron-icon></li>
+	        <array-selector id='selector' items='{{criterias}}' selected="{{selected}}" multi toggle></array-selector>
+        </iron-selector>
+	</section>
+</template>
+
+<script>
+	Polymer({
+	    is: 'app-back',
+      behaviors: [Polymer.NeonAnimatableBehavior],
+	    properties: {
+	    	criterias: {
+	    		type: Array,
+        		value: function() { return []; }
+        	},
+          front: {
+            type: Boolean,
+            value: false
+          },
+          animationConfig: {
+              value: function() {
+                  return {
+                    "entry": {
+                        node: this,
+                        name: 'transform-animation',
+                        transformFrom: 'perspective(600px) rotateY(180deg)',
+                        transformTo: 'perspective(600px) rotateY(360deg)'
+                    },
+                    "exit": {
+                        node: this,
+                        name: 'transform-animation',
+                        transformFrom: 'perspective(600px) rotateY(0deg)',
+                        transformTo: 'perspective(600px) rotateY(180deg)'
+                    }
+                }
+              }
+          }
+	    },
+  		attached: function() {
+  			var selector = Polymer.dom(this.root).querySelector('iron-selector');
+  			selector.multi = true;
+			  selector.selectedValues = [];    //  ???????????????????????????????????????????? //
+
+  			selector._toggleSelected = function(value) {
+		      var i = this.selectedValues.indexOf(value);
+		      var unselected = i < 0;
+		      if (unselected) {
+		      	if (this.selectedValues.length >= 3) { return; };
+	        	this.selectedValues.push(value);
+		      	Polymer.dom(this.root).querySelector('#selector').select(this._valueToItem(value));
+		      	if (this.selectedValues.length == 3) {
+		      		this.fire('');
+		      	}
+		      } else {
+		        this.selectedValues.splice(i, 1);
+   		      	Polymer.dom(this.root).querySelector('#selector').deselect(this._valueToItem(value));
+		      }
+		      this._selection.setItemSelected(this._valueToItem(value), unselected);
+		    }.bind(selector);
+		},
+		stepUp: function(e) {
+			e.target.parentElement.children[0].stepUp();
+		},
+		stepDown: function(e) {
+			e.target.parentElement.children[0].stepDown();
+		},
+		prevent: function (e) {
+			e.preventDefault();
+		}
+	});
+</script>
+</dom-module>

@@ -2,65 +2,76 @@
 
 <dom-module id="app-detail">
     <style>
+	@font-face {
+	    font-family: HelveticaNeue;
+	    src: url('../../../fonts/HelveticaNeueBold.ttf');
+	    font-weight: bold;
+	}
 
-header {
-	display: flex;
-}
+	@font-face {
+	    font-family: HelveticaNeue;
+	    src: url('../../../fonts/HelveticaNeueLTStd-Lt.otf');
+	    font-weight: lighter;
+	}    
+	:host {
+		display: block;
+		height: 100%;
+		background-image: url("statue-liberte.svg");
+		background-repeat: no-repeat;
+		background-size: 100px;
+		background-position: 5% 115%;
+		background-color: #FFFFFF;
+	}
+	.center {
+		width: 465px;
+		height: 100%;
+		margin: auto;
+		margin-top: 25px;
+	}
+	header {
+		display: flex;
+	}
+	header::before {
+		content: '';
+		display: block;
+		height: 10px;
+		background-color: #325E82;
+	}
+	header::after {
+		content: '';
+		display: block;
+		height: 10px;
+		background-color: #6590A4;
+	}
+	article: {
+		height: 100%;
+	}
+	article p {
+		font-family: 'HelveticaNeue';  /*Helvetica Neue 45 Light*/
+		font-size: 0.8em; 
+		font-weight: lighter;
+		text-align: justify;
+		color: #6590A4;
+	}
 
-header::before
-{
-	content: '';
-	display: block;
-	height: 10px;
-	background-color: #325E82;
-}
-
-header::after
-{
-	content: '';
-	display: block;
-	height: 10px;
-	background-color: #6590A4;
-}
-
-
-img::after {
-}
-
-section
-{
-	width: 365px;
-	margin: auto;
-	margin-top: 25px;
-}
-
-section span
-{
-	font-family: 'Calibri';  /*Helvetica Neue 75 Bold */
-	font-weight: bold;
-	font-size: 15px;
-}
-
-section p
-{
-	font-family: 'Helvetica';  /*Helvetica Neue 45 Light*/
-	font-size: 11px; 
-	font-weight: lighter;
-	color: #6590A4;
-} 
+	span::first-word {
+	    font-size: 300%;
+	    margin: 0 10px 10px 0;
+	}
     </style>
     <template>
-		<header>
-			<img src="http://fakeimg.pl/167x111/">
-			<img src="http://fakeimg.pl/166x111/">
-			<img src="http://fakeimg.pl/167x111/">
-		</header>
-		<section>
-			<p><span>New York</span> has long tied its rising power and economic success to investments in arts and culture. In its early nineteenth century aspirations to rival Boston, and later the great cities of Europe, New York’s cultural life has been seen as a symbol of the city’s wider vitality. From Carnegie Hall to MoMA, public-private partnerships linking civic ambition and wealthy philanthropists have endowed the city with world-class non-profit cultural institutions. Allied to this, New York’s hugely dynamic cultural scene finds expression in everything from Broadway theatre to hip hop. The city is also a giant commercial marketplace for art and creative industries, from art auctions to fashion, design and advertising.</p>
-			<p>This creative energy is not just found in Manhattan. The fluid association of creative activity with particular neighbourhoods has served to define and redefine parts of the city. From Greenwich Village in the 1950s and ‘60s to SoHo and TriBeCa in the 1970s and ‘80s to Williamsburg and Dumbo in the 2000s, New York’s creativity shifts and re-forms from place to place. This process continues; the presence of artists is currently helping to revive Bushwick, Brooklyn; Long Island City, Queens; Mott Haven in the Bronx; and St. George, Staten Island.</p>
-			<p>This fluidity is partly driven by the city’s enormous diversity. New York has been one of the primary gateways to America for immigrants for centuries, and it continues to have a huge foreign-born population – currently 37 per cent of the total – who bring their own cultures to add to the city’s mix. Residents and visitors alike are
-			</p>
-		</section>
+    	<article>
+			<header>
+				<img src="http://fakeimg.pl/167x111/">
+				<img src="http://fakeimg.pl/166x111/">
+				<img src="http://fakeimg.pl/167x111/">
+			</header>
+			<div class='center'>
+				<template is="dom-repeat" items="{{detail.paragraphs}}">
+					<p><span>{{item}}</span></p>
+				</template>
+			</div>
+		<article>
     </template>
 	<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="scripts/jquery.fs.scroller.js"></script>
@@ -68,22 +79,13 @@ section p
 	<script>
 	  Polymer({
 	    is: 'app-detail',
-	    behaviors: [Polymer.NeonAnimatableBehavior],
 	    properties: {
-		    animationConfig: {
-		    	value: function() {
-		        	return {
-		          		'entry': {
-		            		name: 'slide-left-animation',
-		            		node: this
-		        		},
-		          		'exit': {
-		            		name: 'slide-from-left-animation',
-		            		node: this
-		            	}
-		        	}
-		    	}
-			}
+	      detail: {
+	        type: Object,
+	        value: function() {
+	          return {};
+	        }
+	      },
 	    }
 	  });
 	</script>
